@@ -4,6 +4,7 @@
     Private Sub PortActions_Load() Handles MyBase.Load
         cbxActionsMsgBoxButtons.SelectedIndex = 0
         cbxActionsMsgBoxStyle.SelectedIndex = 0
+        selectProgramDialog.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
         For Each PortName In My.Computer.Ports.SerialPortNames
             lstCurrentPorts.Items.Add(PortName)
         Next
@@ -98,6 +99,26 @@
     
     Private Sub chkActionsProgram_CheckedChanged() Handles chkActionsProgram.CheckedChanged
         grpActionsProgram.Enabled = chkActionsProgram.Checked
+    End Sub
+    
+    Private Sub btnActionsProgramBrowse_Click(sender As Object, e As EventArgs) Handles btnActionsProgramBrowse.Click
+        If selectProgramDialog.ShowDialog = DialogResult.OK Then
+            txtActionsProgram.Text = selectProgramDialog.FileName
+        End If
+    End Sub
+    
+    Dim PuTTYprofile As String
+    Private Sub btnActionsProgramPuTTY_Click(sender As Object, e As EventArgs) Handles btnActionsProgramPuTTY.Click
+        PuTTYprofile = InputBox("Enter PuTTY profile name:", "PuTTY Profile")
+        If PuTTYprofile <> "" Then
+            txtActionsProgramArgs.Text = "@" & PuTTYprofile
+        End If
+    End Sub
+    
+    Private Sub btnActionsProgramPuTTY_MouseUp(sender As Object, e As MouseEventArgs) Handles btnActionsProgramPuTTY.MouseUp
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            txtActionsProgram.Text = Environment.GetEnvironmentVariable("ProgramFiles") & "\PuTTY\putty.exe"
+        End If
     End Sub
     
     Private Sub chkActionsMsgBox_CheckedChanged() Handles chkActionsMsgBox.CheckedChanged

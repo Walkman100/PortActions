@@ -47,14 +47,15 @@ Partial Class PortActions
         Me.lblActionsMsgBoxText = New System.Windows.Forms.Label()
         Me.txtActionsMsgBoxText = New System.Windows.Forms.TextBox()
         Me.grpActionsProgram = New System.Windows.Forms.GroupBox()
+        Me.btnActionsProgramPuTTY = New System.Windows.Forms.Button()
+        Me.btnActionsProgramBrowse = New System.Windows.Forms.Button()
         Me.txtActionsProgramArgs = New System.Windows.Forms.TextBox()
         Me.lblActionsProgramArgs = New System.Windows.Forms.Label()
         Me.lblActionsProgram = New System.Windows.Forms.Label()
         Me.txtActionsProgram = New System.Windows.Forms.TextBox()
         Me.btnStart = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.btnActionsProgramBrowse = New System.Windows.Forms.Button()
-        Me.btnActionsProgramPuTTY = New System.Windows.Forms.Button()
+        Me.selectProgramDialog = New System.Windows.Forms.OpenFileDialog()
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
@@ -110,9 +111,9 @@ Partial Class PortActions
         Me.txtPorts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.txtPorts.Enabled = false
-        Me.txtPorts.Location = New System.Drawing.Point(84, 41)
+        Me.txtPorts.Location = New System.Drawing.Point(76, 41)
         Me.txtPorts.Name = "txtPorts"
-        Me.txtPorts.Size = New System.Drawing.Size(115, 20)
+        Me.txtPorts.Size = New System.Drawing.Size(123, 20)
         Me.txtPorts.TabIndex = 2
         '
         'optPortsSome
@@ -253,9 +254,9 @@ Partial Class PortActions
         Me.cbxActionsMsgBoxButtons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxActionsMsgBoxButtons.FormattingEnabled = true
         Me.cbxActionsMsgBoxButtons.Items.AddRange(New Object() {"OK button only (default)", "OK and Cancel buttons", "Yes and No buttons", "Yes, No, and Cancel buttons", "Retry and Cancel buttons", "Abort, Retry, and Ignore buttons"})
-        Me.cbxActionsMsgBoxButtons.Location = New System.Drawing.Point(52, 39)
+        Me.cbxActionsMsgBoxButtons.Location = New System.Drawing.Point(50, 39)
         Me.cbxActionsMsgBoxButtons.Name = "cbxActionsMsgBoxButtons"
-        Me.cbxActionsMsgBoxButtons.Size = New System.Drawing.Size(135, 21)
+        Me.cbxActionsMsgBoxButtons.Size = New System.Drawing.Size(137, 21)
         Me.cbxActionsMsgBoxButtons.TabIndex = 7
         '
         'lblActionsMsgBoxButtons
@@ -274,9 +275,9 @@ Partial Class PortActions
         Me.cbxActionsMsgBoxStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxActionsMsgBoxStyle.FormattingEnabled = true
         Me.cbxActionsMsgBoxStyle.Items.AddRange(New Object() {"None", "Error", "Warning", "Information", "Question"})
-        Me.cbxActionsMsgBoxStyle.Location = New System.Drawing.Point(40, 62)
+        Me.cbxActionsMsgBoxStyle.Location = New System.Drawing.Point(37, 62)
         Me.cbxActionsMsgBoxStyle.Name = "cbxActionsMsgBoxStyle"
-        Me.cbxActionsMsgBoxStyle.Size = New System.Drawing.Size(147, 21)
+        Me.cbxActionsMsgBoxStyle.Size = New System.Drawing.Size(150, 21)
         Me.cbxActionsMsgBoxStyle.TabIndex = 5
         '
         'lblActionsMsgBoxStyle
@@ -301,9 +302,9 @@ Partial Class PortActions
         '
         Me.txtActionsMsgBoxText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.txtActionsMsgBoxText.Location = New System.Drawing.Point(43, 17)
+        Me.txtActionsMsgBoxText.Location = New System.Drawing.Point(37, 17)
         Me.txtActionsMsgBoxText.Name = "txtActionsMsgBoxText"
-        Me.txtActionsMsgBoxText.Size = New System.Drawing.Size(144, 20)
+        Me.txtActionsMsgBoxText.Size = New System.Drawing.Size(150, 20)
         Me.txtActionsMsgBoxText.TabIndex = 2
         '
         'grpActionsProgram
@@ -323,13 +324,33 @@ Partial Class PortActions
         Me.grpActionsProgram.TabIndex = 3
         Me.grpActionsProgram.TabStop = false
         '
+        'btnActionsProgramPuTTY
+        '
+        Me.btnActionsProgramPuTTY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnActionsProgramPuTTY.Image = CType(resources.GetObject("btnActionsProgramPuTTY.Image"),System.Drawing.Image)
+        Me.btnActionsProgramPuTTY.Location = New System.Drawing.Point(164, 37)
+        Me.btnActionsProgramPuTTY.Name = "btnActionsProgramPuTTY"
+        Me.btnActionsProgramPuTTY.Size = New System.Drawing.Size(23, 23)
+        Me.btnActionsProgramPuTTY.TabIndex = 7
+        Me.btnActionsProgramPuTTY.UseVisualStyleBackColor = true
+        '
+        'btnActionsProgramBrowse
+        '
+        Me.btnActionsProgramBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnActionsProgramBrowse.Image = CType(resources.GetObject("btnActionsProgramBrowse.Image"),System.Drawing.Image)
+        Me.btnActionsProgramBrowse.Location = New System.Drawing.Point(164, 15)
+        Me.btnActionsProgramBrowse.Name = "btnActionsProgramBrowse"
+        Me.btnActionsProgramBrowse.Size = New System.Drawing.Size(23, 23)
+        Me.btnActionsProgramBrowse.TabIndex = 6
+        Me.btnActionsProgramBrowse.UseVisualStyleBackColor = true
+        '
         'txtActionsProgramArgs
         '
         Me.txtActionsProgramArgs.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.txtActionsProgramArgs.Location = New System.Drawing.Point(43, 39)
+        Me.txtActionsProgramArgs.Location = New System.Drawing.Point(36, 39)
         Me.txtActionsProgramArgs.Name = "txtActionsProgramArgs"
-        Me.txtActionsProgramArgs.Size = New System.Drawing.Size(121, 20)
+        Me.txtActionsProgramArgs.Size = New System.Drawing.Size(128, 20)
         Me.txtActionsProgramArgs.TabIndex = 5
         '
         'lblActionsProgramArgs
@@ -354,9 +375,9 @@ Partial Class PortActions
         '
         Me.txtActionsProgram.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.txtActionsProgram.Location = New System.Drawing.Point(61, 17)
+        Me.txtActionsProgram.Location = New System.Drawing.Point(55, 17)
         Me.txtActionsProgram.Name = "txtActionsProgram"
-        Me.txtActionsProgram.Size = New System.Drawing.Size(103, 20)
+        Me.txtActionsProgram.Size = New System.Drawing.Size(109, 20)
         Me.txtActionsProgram.TabIndex = 2
         '
         'btnStart
@@ -380,25 +401,12 @@ Partial Class PortActions
         Me.btnClose.Text = "Exit"
         Me.btnClose.UseVisualStyleBackColor = true
         '
-        'btnActionsProgramBrowse
+        'selectProgramDialog
         '
-        Me.btnActionsProgramBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btnActionsProgramBrowse.Image = CType(resources.GetObject("btnActionsProgramBrowse.Image"),System.Drawing.Image)
-        Me.btnActionsProgramBrowse.Location = New System.Drawing.Point(164, 15)
-        Me.btnActionsProgramBrowse.Name = "btnActionsProgramBrowse"
-        Me.btnActionsProgramBrowse.Size = New System.Drawing.Size(23, 23)
-        Me.btnActionsProgramBrowse.TabIndex = 6
-        Me.btnActionsProgramBrowse.UseVisualStyleBackColor = true
-        '
-        'btnActionsProgramPuTTY
-        '
-        Me.btnActionsProgramPuTTY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btnActionsProgramPuTTY.Image = CType(resources.GetObject("btnActionsProgramPuTTY.Image"),System.Drawing.Image)
-        Me.btnActionsProgramPuTTY.Location = New System.Drawing.Point(164, 37)
-        Me.btnActionsProgramPuTTY.Name = "btnActionsProgramPuTTY"
-        Me.btnActionsProgramPuTTY.Size = New System.Drawing.Size(23, 23)
-        Me.btnActionsProgramPuTTY.TabIndex = 7
-        Me.btnActionsProgramPuTTY.UseVisualStyleBackColor = true
+        Me.selectProgramDialog.DefaultExt = "exe"
+        Me.selectProgramDialog.Filter = "Executable files|*.exe; *.bat; *.com; *.vbs; *.mmc; *.js; *.cpl|All files|*.*"
+        Me.selectProgramDialog.ReadOnlyChecked = true
+        Me.selectProgramDialog.Title = "Select a program to start:"
         '
         'PortActions
         '
@@ -431,10 +439,11 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
-    Private btnActionsProgramBrowse As System.Windows.Forms.Button
-    Private btnActionsProgramPuTTY As System.Windows.Forms.Button
-    Friend lblActionsMsgBoxButtons As System.Windows.Forms.Label
-    Friend cbxActionsMsgBoxButtons As System.Windows.Forms.ComboBox
+    Friend WithEvents selectProgramDialog As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents btnActionsProgramBrowse As System.Windows.Forms.Button
+    Friend WithEvents btnActionsProgramPuTTY As System.Windows.Forms.Button
+    Friend WithEvents lblActionsMsgBoxButtons As System.Windows.Forms.Label
+    Friend WithEvents cbxActionsMsgBoxButtons As System.Windows.Forms.ComboBox
     'Friend WithEvents
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnStart As System.Windows.Forms.Button
