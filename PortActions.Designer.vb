@@ -64,6 +64,7 @@ Partial Class PortActions
         Me.btnStart = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.selectProgramDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.selectSoundDialog = New System.Windows.Forms.OpenFileDialog()
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
@@ -255,7 +256,7 @@ Partial Class PortActions
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbxActionsSoundSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxActionsSoundSystem.FormattingEnabled = true
-        Me.cbxActionsSoundSystem.Items.AddRange(New Object() {"Question", "Hand", "Exclamation", "Beep", "Asterisk"})
+        Me.cbxActionsSoundSystem.Items.AddRange(New Object() {"Question", "Hand (Error)", "Exclamation (Warning)", "Beep", "Asterisk (Information)"})
         Me.cbxActionsSoundSystem.Location = New System.Drawing.Point(95, 41)
         Me.cbxActionsSoundSystem.Name = "cbxActionsSoundSystem"
         Me.cbxActionsSoundSystem.Size = New System.Drawing.Size(92, 21)
@@ -512,6 +513,12 @@ Partial Class PortActions
         Me.selectProgramDialog.ReadOnlyChecked = true
         Me.selectProgramDialog.Title = "Select a program to start:"
         '
+        'selectSoundDialog
+        '
+        Me.selectSoundDialog.DefaultExt = "wav"
+        Me.selectSoundDialog.Filter = "WAVE Sound files|*.wav"
+        Me.selectSoundDialog.ReadOnlyChecked = true
+        '
         'PortActions
         '
         Me.AcceptButton = Me.btnStart
@@ -545,6 +552,7 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Friend selectSoundDialog As System.Windows.Forms.OpenFileDialog
     Friend WithEvents chkActionsSound As System.Windows.Forms.CheckBox
     Friend WithEvents optActionsSoundFile As System.Windows.Forms.RadioButton
     Friend WithEvents optActionsSoundSystem As System.Windows.Forms.RadioButton

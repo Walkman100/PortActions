@@ -98,7 +98,11 @@
         End If
         If chkActionsSound.Checked Then
             If optActionsSoundFile.Checked Then
-                My.Computer.Audio.Play(txtActionsSoundFile.Text)
+                If System.IO.File.Exists(txtActionsSoundFile.Text) Then
+                    My.Computer.Audio.Play(txtActionsSoundFile.Text)
+                Else
+                    MsgBox("Audio file not found!", MsgBoxStyle.Exclamation)
+                End If
             Else
                 Select Case cbxActionsSoundSystem.SelectedIndex
                     Case 0 'Question
@@ -179,8 +183,8 @@
     End Sub
     
     Private Sub btnActionsSoundFile_Click() Handles btnActionsSoundFile.Click
-        If selectProgramDialog.ShowDialog = DialogResult.OK Then
-            txtActionsSoundFile.Text = selectProgramDialog.FileName
+        If selectSoundDialog.ShowDialog = DialogResult.OK Then
+            txtActionsSoundFile.Text = selectSoundDialog.FileName
         End If
     End Sub
 End Class
