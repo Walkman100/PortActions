@@ -23,6 +23,7 @@ Partial Class PortActions
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PortActions))
         Me.lstCurrentPorts = New System.Windows.Forms.ListBox()
         Me.timerPortChecker = New System.Windows.Forms.Timer(Me.components)
         Me.lblCurrentPorts = New System.Windows.Forms.Label()
@@ -52,6 +53,8 @@ Partial Class PortActions
         Me.txtActionsProgram = New System.Windows.Forms.TextBox()
         Me.btnStart = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.btnActionsProgramBrowse = New System.Windows.Forms.Button()
+        Me.btnActionsProgramPuTTY = New System.Windows.Forms.Button()
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
@@ -307,6 +310,8 @@ Partial Class PortActions
         '
         Me.grpActionsProgram.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpActionsProgram.Controls.Add(Me.btnActionsProgramPuTTY)
+        Me.grpActionsProgram.Controls.Add(Me.btnActionsProgramBrowse)
         Me.grpActionsProgram.Controls.Add(Me.txtActionsProgramArgs)
         Me.grpActionsProgram.Controls.Add(Me.lblActionsProgramArgs)
         Me.grpActionsProgram.Controls.Add(Me.lblActionsProgram)
@@ -324,7 +329,7 @@ Partial Class PortActions
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.txtActionsProgramArgs.Location = New System.Drawing.Point(43, 39)
         Me.txtActionsProgramArgs.Name = "txtActionsProgramArgs"
-        Me.txtActionsProgramArgs.Size = New System.Drawing.Size(144, 20)
+        Me.txtActionsProgramArgs.Size = New System.Drawing.Size(121, 20)
         Me.txtActionsProgramArgs.TabIndex = 5
         '
         'lblActionsProgramArgs
@@ -351,7 +356,7 @@ Partial Class PortActions
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.txtActionsProgram.Location = New System.Drawing.Point(61, 17)
         Me.txtActionsProgram.Name = "txtActionsProgram"
-        Me.txtActionsProgram.Size = New System.Drawing.Size(126, 20)
+        Me.txtActionsProgram.Size = New System.Drawing.Size(103, 20)
         Me.txtActionsProgram.TabIndex = 2
         '
         'btnStart
@@ -374,6 +379,26 @@ Partial Class PortActions
         Me.btnClose.TabIndex = 23
         Me.btnClose.Text = "Exit"
         Me.btnClose.UseVisualStyleBackColor = true
+        '
+        'btnActionsProgramBrowse
+        '
+        Me.btnActionsProgramBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnActionsProgramBrowse.Image = CType(resources.GetObject("btnActionsProgramBrowse.Image"),System.Drawing.Image)
+        Me.btnActionsProgramBrowse.Location = New System.Drawing.Point(164, 15)
+        Me.btnActionsProgramBrowse.Name = "btnActionsProgramBrowse"
+        Me.btnActionsProgramBrowse.Size = New System.Drawing.Size(23, 23)
+        Me.btnActionsProgramBrowse.TabIndex = 6
+        Me.btnActionsProgramBrowse.UseVisualStyleBackColor = true
+        '
+        'btnActionsProgramPuTTY
+        '
+        Me.btnActionsProgramPuTTY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnActionsProgramPuTTY.Image = CType(resources.GetObject("btnActionsProgramPuTTY.Image"),System.Drawing.Image)
+        Me.btnActionsProgramPuTTY.Location = New System.Drawing.Point(164, 37)
+        Me.btnActionsProgramPuTTY.Name = "btnActionsProgramPuTTY"
+        Me.btnActionsProgramPuTTY.Size = New System.Drawing.Size(23, 23)
+        Me.btnActionsProgramPuTTY.TabIndex = 7
+        Me.btnActionsProgramPuTTY.UseVisualStyleBackColor = true
         '
         'PortActions
         '
@@ -406,6 +431,8 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private btnActionsProgramBrowse As System.Windows.Forms.Button
+    Private btnActionsProgramPuTTY As System.Windows.Forms.Button
     Friend lblActionsMsgBoxButtons As System.Windows.Forms.Label
     Friend cbxActionsMsgBoxButtons As System.Windows.Forms.ComboBox
     'Friend WithEvents
