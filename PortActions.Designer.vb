@@ -39,6 +39,8 @@ Partial Class PortActions
         Me.chkActionsProgram = New System.Windows.Forms.CheckBox()
         Me.chkActionsClose = New System.Windows.Forms.CheckBox()
         Me.grpActionsMsgBox = New System.Windows.Forms.GroupBox()
+        Me.cbxActionsMsgBoxButtons = New System.Windows.Forms.ComboBox()
+        Me.lblActionsMsgBoxButtons = New System.Windows.Forms.Label()
         Me.cbxActionsMsgBoxStyle = New System.Windows.Forms.ComboBox()
         Me.lblActionsMsgBoxStyle = New System.Windows.Forms.Label()
         Me.lblActionsMsgBoxText = New System.Windows.Forms.Label()
@@ -65,11 +67,10 @@ Partial Class PortActions
         Me.lstCurrentPorts.FormattingEnabled = true
         Me.lstCurrentPorts.IntegralHeight = false
         Me.lstCurrentPorts.ItemHeight = 16
-        Me.lstCurrentPorts.Items.AddRange(New Object() {"Checking..."})
         Me.lstCurrentPorts.Location = New System.Drawing.Point(223, 30)
         Me.lstCurrentPorts.Name = "lstCurrentPorts"
         Me.lstCurrentPorts.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 419)
+        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 395)
         Me.lstCurrentPorts.TabIndex = 16
         '
         'timerPortChecker
@@ -83,9 +84,9 @@ Partial Class PortActions
         Me.lblCurrentPorts.Font = New System.Drawing.Font("Trebuchet MS", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lblCurrentPorts.Location = New System.Drawing.Point(223, 9)
         Me.lblCurrentPorts.Name = "lblCurrentPorts"
-        Me.lblCurrentPorts.Size = New System.Drawing.Size(165, 18)
+        Me.lblCurrentPorts.Size = New System.Drawing.Size(100, 18)
         Me.lblCurrentPorts.TabIndex = 18
-        Me.lblCurrentPorts.Text = "Current Serial Port Names:"
+        Me.lblCurrentPorts.Text = "Available Ports:"
         '
         'grpPorts
         '
@@ -190,7 +191,7 @@ Partial Class PortActions
         Me.grpActions.Controls.Add(Me.grpActionsProgram)
         Me.grpActions.Location = New System.Drawing.Point(12, 184)
         Me.grpActions.Name = "grpActions"
-        Me.grpActions.Size = New System.Drawing.Size(205, 188)
+        Me.grpActions.Size = New System.Drawing.Size(205, 212)
         Me.grpActions.TabIndex = 21
         Me.grpActions.TabStop = false
         Me.grpActions.Text = "What to do on change:"
@@ -218,7 +219,7 @@ Partial Class PortActions
         'chkActionsClose
         '
         Me.chkActionsClose.AutoSize = true
-        Me.chkActionsClose.Location = New System.Drawing.Point(6, 165)
+        Me.chkActionsClose.Location = New System.Drawing.Point(6, 189)
         Me.chkActionsClose.Name = "chkActionsClose"
         Me.chkActionsClose.Size = New System.Drawing.Size(112, 17)
         Me.chkActionsClose.TabIndex = 5
@@ -229,6 +230,8 @@ Partial Class PortActions
         '
         Me.grpActionsMsgBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpActionsMsgBox.Controls.Add(Me.cbxActionsMsgBoxButtons)
+        Me.grpActionsMsgBox.Controls.Add(Me.lblActionsMsgBoxButtons)
         Me.grpActionsMsgBox.Controls.Add(Me.cbxActionsMsgBoxStyle)
         Me.grpActionsMsgBox.Controls.Add(Me.lblActionsMsgBoxStyle)
         Me.grpActionsMsgBox.Controls.Add(Me.lblActionsMsgBoxText)
@@ -236,23 +239,47 @@ Partial Class PortActions
         Me.grpActionsMsgBox.Enabled = false
         Me.grpActionsMsgBox.Location = New System.Drawing.Point(6, 92)
         Me.grpActionsMsgBox.Name = "grpActionsMsgBox"
-        Me.grpActionsMsgBox.Size = New System.Drawing.Size(193, 67)
+        Me.grpActionsMsgBox.Size = New System.Drawing.Size(193, 91)
         Me.grpActionsMsgBox.TabIndex = 4
         Me.grpActionsMsgBox.TabStop = false
         '
+        'cbxActionsMsgBoxButtons
+        '
+        Me.cbxActionsMsgBoxButtons.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.cbxActionsMsgBoxButtons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxActionsMsgBoxButtons.FormattingEnabled = true
+        Me.cbxActionsMsgBoxButtons.Items.AddRange(New Object() {"OK button only (default)", "OK and Cancel buttons", "Yes and No buttons", "Yes, No, and Cancel buttons", "Retry and Cancel buttons", "Abort, Retry, and Ignore buttons"})
+        Me.cbxActionsMsgBoxButtons.Location = New System.Drawing.Point(52, 39)
+        Me.cbxActionsMsgBoxButtons.Name = "cbxActionsMsgBoxButtons"
+        Me.cbxActionsMsgBoxButtons.Size = New System.Drawing.Size(135, 21)
+        Me.cbxActionsMsgBoxButtons.TabIndex = 7
+        '
+        'lblActionsMsgBoxButtons
+        '
+        Me.lblActionsMsgBoxButtons.AutoSize = true
+        Me.lblActionsMsgBoxButtons.Location = New System.Drawing.Point(6, 42)
+        Me.lblActionsMsgBoxButtons.Name = "lblActionsMsgBoxButtons"
+        Me.lblActionsMsgBoxButtons.Size = New System.Drawing.Size(46, 13)
+        Me.lblActionsMsgBoxButtons.TabIndex = 6
+        Me.lblActionsMsgBoxButtons.Text = "Buttons:"
+        '
         'cbxActionsMsgBoxStyle
         '
+        Me.cbxActionsMsgBoxStyle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbxActionsMsgBoxStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxActionsMsgBoxStyle.FormattingEnabled = true
-        Me.cbxActionsMsgBoxStyle.Location = New System.Drawing.Point(45, 39)
+        Me.cbxActionsMsgBoxStyle.Items.AddRange(New Object() {"None", "Error", "Warning", "Information", "Question"})
+        Me.cbxActionsMsgBoxStyle.Location = New System.Drawing.Point(40, 62)
         Me.cbxActionsMsgBoxStyle.Name = "cbxActionsMsgBoxStyle"
-        Me.cbxActionsMsgBoxStyle.Size = New System.Drawing.Size(142, 21)
+        Me.cbxActionsMsgBoxStyle.Size = New System.Drawing.Size(147, 21)
         Me.cbxActionsMsgBoxStyle.TabIndex = 5
         '
         'lblActionsMsgBoxStyle
         '
         Me.lblActionsMsgBoxStyle.AutoSize = true
-        Me.lblActionsMsgBoxStyle.Location = New System.Drawing.Point(6, 42)
+        Me.lblActionsMsgBoxStyle.Location = New System.Drawing.Point(6, 65)
         Me.lblActionsMsgBoxStyle.Name = "lblActionsMsgBoxStyle"
         Me.lblActionsMsgBoxStyle.Size = New System.Drawing.Size(33, 13)
         Me.lblActionsMsgBoxStyle.TabIndex = 4
@@ -330,18 +357,18 @@ Partial Class PortActions
         'btnStart
         '
         Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnStart.Location = New System.Drawing.Point(12, 378)
+        Me.btnStart.Location = New System.Drawing.Point(12, 402)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(75, 23)
         Me.btnStart.TabIndex = 22
-        Me.btnStart.Text = "Start..."
+        Me.btnStart.Text = "Start"
         Me.btnStart.UseVisualStyleBackColor = true
         '
         'btnClose
         '
         Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnClose.Location = New System.Drawing.Point(93, 378)
+        Me.btnClose.Location = New System.Drawing.Point(93, 402)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 23
@@ -354,7 +381,7 @@ Partial Class PortActions
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnClose
-        Me.ClientSize = New System.Drawing.Size(477, 461)
+        Me.ClientSize = New System.Drawing.Size(477, 437)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.grpActions)
@@ -379,6 +406,8 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Friend lblActionsMsgBoxButtons As System.Windows.Forms.Label
+    Friend cbxActionsMsgBoxButtons As System.Windows.Forms.ComboBox
     'Friend WithEvents
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnStart As System.Windows.Forms.Button
