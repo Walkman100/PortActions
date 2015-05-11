@@ -50,6 +50,38 @@
         Application.Exit
     End Sub
     
+    Private buttons As Integer
+    Private style As Integer
+    Private Function ShowMessage() As MsgBoxResult
+        Select Case cbxActionsMsgBoxButtons.SelectedIndex
+            Case 0 'OK button only (default)
+                buttons = MsgBoxStyle.OkOnly
+            Case 1 'OK and Cancel buttons
+                buttons = MsgBoxStyle.OkCancel
+            Case 2 'Yes and No buttons
+                buttons = MsgBoxStyle.YesNo
+            Case 3 'Yes, No, and Cancel buttons
+                buttons = MsgBoxStyle.YesNoCancel
+            Case 4 'Retry and Cancel buttons
+                buttons = MsgBoxStyle.RetryCancel
+            Case 5 'Abort, Retry, and Ignore buttons
+                buttons = MsgBoxStyle.AbortRetryIgnore
+        End Select
+        Select Case cbxActionsMsgBoxStyle.SelectedIndex
+            Case 0 'None
+                style = 0
+            Case 1 'Error
+                style = MsgBoxStyle.Critical
+            Case 2 'Warning
+                style = MsgBoxStyle.Exclamation
+            Case 3 'Information
+                style = MsgBoxStyle.Information
+            Case 4 'Question
+                style = MsgBoxStyle.Question
+        End Select
+        Return MsgBox(txtActionsMsgBoxText.Text, buttons + style)
+    End Function
+    
     ' GUI stuff
     
     Private Sub optPortsSome_CheckedChanged() Handles optPortsSome.CheckedChanged
