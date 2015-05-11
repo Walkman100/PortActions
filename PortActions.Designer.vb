@@ -32,10 +32,11 @@ Partial Class PortActions
         Me.optPortsSome = New System.Windows.Forms.RadioButton()
         Me.optPortsAll = New System.Windows.Forms.RadioButton()
         Me.grpChanges = New System.Windows.Forms.GroupBox()
-        Me.chkChangesForget = New System.Windows.Forms.CheckBox()
+        Me.chkChangesRemember = New System.Windows.Forms.CheckBox()
         Me.chkChangesAdded = New System.Windows.Forms.CheckBox()
         Me.chkChangesRemoved = New System.Windows.Forms.CheckBox()
         Me.grpActions = New System.Windows.Forms.GroupBox()
+        Me.chkActionsStop = New System.Windows.Forms.CheckBox()
         Me.chkActionsMsgBox = New System.Windows.Forms.CheckBox()
         Me.chkActionsProgram = New System.Windows.Forms.CheckBox()
         Me.chkActionsClose = New System.Windows.Forms.CheckBox()
@@ -111,9 +112,9 @@ Partial Class PortActions
         Me.txtPorts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.txtPorts.Enabled = false
-        Me.txtPorts.Location = New System.Drawing.Point(76, 41)
+        Me.txtPorts.Location = New System.Drawing.Point(73, 41)
         Me.txtPorts.Name = "txtPorts"
-        Me.txtPorts.Size = New System.Drawing.Size(123, 20)
+        Me.txtPorts.Size = New System.Drawing.Size(128, 20)
         Me.txtPorts.TabIndex = 2
         '
         'optPortsSome
@@ -142,7 +143,7 @@ Partial Class PortActions
         '
         Me.grpChanges.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.grpChanges.Controls.Add(Me.chkChangesForget)
+        Me.grpChanges.Controls.Add(Me.chkChangesRemember)
         Me.grpChanges.Controls.Add(Me.chkChangesAdded)
         Me.grpChanges.Controls.Add(Me.chkChangesRemoved)
         Me.grpChanges.Location = New System.Drawing.Point(12, 90)
@@ -152,15 +153,15 @@ Partial Class PortActions
         Me.grpChanges.TabStop = false
         Me.grpChanges.Text = "What to count as changes:"
         '
-        'chkChangesForget
+        'chkChangesRemember
         '
-        Me.chkChangesForget.AutoSize = true
-        Me.chkChangesForget.Location = New System.Drawing.Point(6, 65)
-        Me.chkChangesForget.Name = "chkChangesForget"
-        Me.chkChangesForget.Size = New System.Drawing.Size(151, 17)
-        Me.chkChangesForget.TabIndex = 2
-        Me.chkChangesForget.Text = "Don't forget removed ports"
-        Me.chkChangesForget.UseVisualStyleBackColor = true
+        Me.chkChangesRemember.AutoSize = true
+        Me.chkChangesRemember.Location = New System.Drawing.Point(6, 65)
+        Me.chkChangesRemember.Name = "chkChangesRemember"
+        Me.chkChangesRemember.Size = New System.Drawing.Size(151, 17)
+        Me.chkChangesRemember.TabIndex = 2
+        Me.chkChangesRemember.Text = "Don't forget removed ports"
+        Me.chkChangesRemember.UseVisualStyleBackColor = true
         '
         'chkChangesAdded
         '
@@ -186,7 +187,8 @@ Partial Class PortActions
         '
         'grpActions
         '
-        Me.grpActions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+        Me.grpActions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+                        Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.grpActions.Controls.Add(Me.chkActionsMsgBox)
         Me.grpActions.Controls.Add(Me.chkActionsProgram)
@@ -199,6 +201,16 @@ Partial Class PortActions
         Me.grpActions.TabIndex = 21
         Me.grpActions.TabStop = false
         Me.grpActions.Text = "What to do on change:"
+        '
+        'chkActionsStop
+        '
+        Me.chkActionsStop.AutoSize = true
+        Me.chkActionsStop.Location = New System.Drawing.Point(6, 189)
+        Me.chkActionsStop.Name = "chkActionsStop"
+        Me.chkActionsStop.Size = New System.Drawing.Size(95, 17)
+        Me.chkActionsStop.TabIndex = 6
+        Me.chkActionsStop.Text = "Stop checking"
+        Me.chkActionsStop.UseVisualStyleBackColor = true
         '
         'chkActionsMsgBox
         '
@@ -377,12 +389,13 @@ Partial Class PortActions
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.txtActionsProgram.Location = New System.Drawing.Point(55, 17)
         Me.txtActionsProgram.Name = "txtActionsProgram"
+        Me.txtActionsProgram.ReadOnly = true
         Me.txtActionsProgram.Size = New System.Drawing.Size(109, 20)
         Me.txtActionsProgram.TabIndex = 2
         '
         'btnStart
         '
-        Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnStart.Location = New System.Drawing.Point(12, 402)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(75, 23)
@@ -392,7 +405,7 @@ Partial Class PortActions
         '
         'btnClose
         '
-        Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnClose.Location = New System.Drawing.Point(93, 402)
         Me.btnClose.Name = "btnClose"
@@ -439,6 +452,7 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Friend chkActionsStop As System.Windows.Forms.CheckBox
     Friend WithEvents selectProgramDialog As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnActionsProgramBrowse As System.Windows.Forms.Button
     Friend WithEvents btnActionsProgramPuTTY As System.Windows.Forms.Button
@@ -463,7 +477,7 @@ Partial Class PortActions
     Friend WithEvents grpActions As System.Windows.Forms.GroupBox
     Friend WithEvents chkChangesRemoved As System.Windows.Forms.CheckBox
     Friend WithEvents chkChangesAdded As System.Windows.Forms.CheckBox
-    Friend WithEvents chkChangesForget As System.Windows.Forms.CheckBox
+    Friend WithEvents chkChangesRemember As System.Windows.Forms.CheckBox
     Friend WithEvents grpChanges As System.Windows.Forms.GroupBox
     Friend WithEvents optPortsAll As System.Windows.Forms.RadioButton
     Friend WithEvents optPortsSome As System.Windows.Forms.RadioButton

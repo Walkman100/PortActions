@@ -10,7 +10,7 @@
         Next
     End Sub
     
-    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+    Private Sub btnStart_Click() Handles btnStart.Click
         If btnStart.Text = "Start" Then
             btnStart.Text = "Started!"
             timerPortChecker.Start
@@ -32,23 +32,48 @@
             lblCurrentPorts.Text = "Available Ports:"
             Exit Sub
         End If
-        If chkChangesForget.Checked = True Then
+        
+        For Each PortName In My.Computer.Ports.SerialPortNames
+            If Not lstCurrentPorts.Items.Contains(PortName) Then
+                If chkChangesAdded.Checked Then DoActions(PortName)
+            End If
+        Next
+        For Each PortInList In lstCurrentPorts.Items
+            If Not My.Computer.Ports.SerialPortNames.Contains(PortInList) Then
+                If chkChangesRemoved.Checked Then DoActions(PortInList)
+            End If
+        Next
+        
+        If chkChangesRemember.Checked = True Then
             lblCurrentPorts.Text = "Remembered Serial Ports:"
-            For Each PortName In My.Computer.Ports.SerialPortNames
-                If Not lstCurrentPorts.Items.Contains(PortName) Then
-                    lstCurrentPorts.Items.Add(PortName)
-                End If
-            Next
         Else
             lstCurrentPorts.Items.Clear()
-            For Each PortName In My.Computer.Ports.SerialPortNames
-                lstCurrentPorts.Items.Add(PortName)
-            Next
         End If
+        For Each PortName In My.Computer.Ports.SerialPortNames
+            If Not lstCurrentPorts.Items.Contains(PortName) Then
+                lstCurrentPorts.Items.Add(PortName)
+            End If
+        Next
     End Sub
     
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        Application.Exit
+    Private Sub DoActions(port As String)
+        If chkActionsProgram.Checked Then
+            If System.IO.File.Exists(txtActionsProgram.Text) Then
+                Process.Start(txtActionsProgram.Text, txtActionsProgramArgs.Text)
+            Else
+                MsgBox("Program not found!", MsgBoxStyle.Exclamation)
+            End If
+        End If
+        If chkActionsMsgBox.Checked Then
+            ShowMessage
+        End If
+        
+        If chkActionsStop.Checked Then
+            btnStart_Click
+        End If
+        If chkActionsClose.Checked Then
+            Application.Exit
+        End If
     End Sub
     
     Private buttons As Integer
@@ -83,6 +108,10 @@
         Return MsgBox(txtActionsMsgBoxText.Text, buttons + style)
     End Function
     
+    Private Sub btnClose_Click() Handles btnClose.Click
+        Application.Exit
+    End Sub
+    
     ' GUI stuff
     
     Private Sub optPortsSome_CheckedChanged() Handles optPortsSome.CheckedChanged
@@ -90,25 +119,25 @@
     End Sub
     
     Private Sub chkChangesRemoved_CheckedChanged() Handles chkChangesRemoved.CheckedChanged
-        chkChangesForget.Enabled = Not chkChangesRemoved.Checked
+        chkChangesRemember.Enabled = Not chkChangesRemoved.Checked
     End Sub
     
-    Private Sub chkChangesForget_CheckedChanged() Handles chkChangesForget.CheckedChanged
-        chkChangesRemoved.Enabled = Not chkChangesForget.Checked
+    Private Sub chkChangesRemember_CheckedChanged() Handles chkChangesRemember.CheckedChanged
+        chkChangesRemoved.Enabled = Not chkChangesRemember.Checked
     End Sub
     
     Private Sub chkActionsProgram_CheckedChanged() Handles chkActionsProgram.CheckedChanged
         grpActionsProgram.Enabled = chkActionsProgram.Checked
     End Sub
     
-    Private Sub btnActionsProgramBrowse_Click(sender As Object, e As EventArgs) Handles btnActionsProgramBrowse.Click
+    Private Sub btnActionsProgramBrowse_Click() Handles btnActionsProgramBrowse.Click
         If selectProgramDialog.ShowDialog = DialogResult.OK Then
             txtActionsProgram.Text = selectProgramDialog.FileName
         End If
     End Sub
     
     Dim PuTTYprofile As String
-    Private Sub btnActionsProgramPuTTY_Click(sender As Object, e As EventArgs) Handles btnActionsProgramPuTTY.Click
+    Private Sub btnActionsProgramPuTTY_Click() Handles btnActionsProgramPuTTY.Click
         PuTTYprofile = InputBox("Enter PuTTY profile name:", "PuTTY Profile")
         If PuTTYprofile <> "" Then
             txtActionsProgramArgs.Text = "@" & PuTTYprofile
