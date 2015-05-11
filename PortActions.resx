@@ -118,9 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="timerPortChecker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>174, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnActionsSoundFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAIXSURBVDhPpdLda1JxGAfwA/1L01x3XZQKBknojRdeqUumhnpx9GIYrSKm0aIXxFFp52i+YtN0
+        TrQJmhiUNCdzZiDSMjdZESx6//Y7RzJjloMuPhfnnOf5/p7f4aHEYvF/oex2+12bzdYfo0PTtGBc0yiK
+        FL2vVCool8solUooFou8ZDIJq9X61Gw2i34xGAwik8kkUCgUR4YBFovlHdcYj8cRjUYRDocRCoUQiUTg
+        crn2iQ9Op3PI4XB8nJ2dnR8GGI3GvUJhjW/gGgOBAFiWBcMwPO59KpVCJpNBNpuFz+eDXq8PDgPIQz+X
+        y+G4wQ+hlj1AoGX+MKX57eiMv01pNJrddDpNPrLI13bweGMgP6rWO2Cl+paEsD8otVrdSyQSfHqhvoPF
+        5MuBRwPXx7i10kK62sWUlvlOqVSqXiwWg1DHori5ixvp1kSLySZSz95wU3+jlEplNxgMkvsyeNLow736
+        6q9ukuary00sxLfIFbpcwFdKLpdvsyz5IWSC/HoPHq44Q4pTLX7ca4kmadrClVgDl6ObvIV4Aw8r21zA
+        F0omk732er0QzbAIFjs4/6AOO1P7p7nABpbIQSTgMyWRSDoejwciHYOL4TqMS89hmODcnSrmSS0J+ERJ
+        pdK22+3GNJlgzl8DfX99Ihs3CfuCC9jnJmjTl27j2FkWpy+sHtoJeplbtDXq5Kkz90a367DI3vSEOv/0
+        T/ZufsUnsn0kAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnActionsProgramPuTTY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

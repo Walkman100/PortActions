@@ -36,6 +36,13 @@ Partial Class PortActions
         Me.chkChangesAdded = New System.Windows.Forms.CheckBox()
         Me.chkChangesRemoved = New System.Windows.Forms.CheckBox()
         Me.grpActions = New System.Windows.Forms.GroupBox()
+        Me.chkActionsSound = New System.Windows.Forms.CheckBox()
+        Me.grpActionsSound = New System.Windows.Forms.GroupBox()
+        Me.btnActionsSoundFile = New System.Windows.Forms.Button()
+        Me.cbxActionsSoundSystem = New System.Windows.Forms.ComboBox()
+        Me.txtActionsSoundFile = New System.Windows.Forms.TextBox()
+        Me.optActionsSoundSystem = New System.Windows.Forms.RadioButton()
+        Me.optActionsSoundFile = New System.Windows.Forms.RadioButton()
         Me.chkActionsStop = New System.Windows.Forms.CheckBox()
         Me.chkActionsMsgBox = New System.Windows.Forms.CheckBox()
         Me.chkActionsProgram = New System.Windows.Forms.CheckBox()
@@ -60,6 +67,7 @@ Partial Class PortActions
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
+        Me.grpActionsSound.SuspendLayout
         Me.grpActionsMsgBox.SuspendLayout
         Me.grpActionsProgram.SuspendLayout
         Me.SuspendLayout
@@ -75,7 +83,7 @@ Partial Class PortActions
         Me.lstCurrentPorts.Location = New System.Drawing.Point(223, 30)
         Me.lstCurrentPorts.Name = "lstCurrentPorts"
         Me.lstCurrentPorts.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 395)
+        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 497)
         Me.lstCurrentPorts.TabIndex = 16
         '
         'timerPortChecker
@@ -190,6 +198,9 @@ Partial Class PortActions
         Me.grpActions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
                         Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpActions.Controls.Add(Me.chkActionsSound)
+        Me.grpActions.Controls.Add(Me.grpActionsSound)
+        Me.grpActions.Controls.Add(Me.chkActionsStop)
         Me.grpActions.Controls.Add(Me.chkActionsMsgBox)
         Me.grpActions.Controls.Add(Me.chkActionsProgram)
         Me.grpActions.Controls.Add(Me.chkActionsClose)
@@ -197,10 +208,90 @@ Partial Class PortActions
         Me.grpActions.Controls.Add(Me.grpActionsProgram)
         Me.grpActions.Location = New System.Drawing.Point(12, 184)
         Me.grpActions.Name = "grpActions"
-        Me.grpActions.Size = New System.Drawing.Size(205, 212)
+        Me.grpActions.Size = New System.Drawing.Size(205, 314)
         Me.grpActions.TabIndex = 21
         Me.grpActions.TabStop = false
         Me.grpActions.Text = "What to do on change:"
+        '
+        'chkActionsSound
+        '
+        Me.chkActionsSound.AutoSize = true
+        Me.chkActionsSound.Location = New System.Drawing.Point(12, 235)
+        Me.chkActionsSound.Name = "chkActionsSound"
+        Me.chkActionsSound.Size = New System.Drawing.Size(83, 17)
+        Me.chkActionsSound.TabIndex = 21
+        Me.chkActionsSound.Text = "Play Sound:"
+        Me.chkActionsSound.UseVisualStyleBackColor = true
+        '
+        'grpActionsSound
+        '
+        Me.grpActionsSound.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grpActionsSound.Controls.Add(Me.btnActionsSoundFile)
+        Me.grpActionsSound.Controls.Add(Me.cbxActionsSoundSystem)
+        Me.grpActionsSound.Controls.Add(Me.txtActionsSoundFile)
+        Me.grpActionsSound.Controls.Add(Me.optActionsSoundSystem)
+        Me.grpActionsSound.Controls.Add(Me.optActionsSoundFile)
+        Me.grpActionsSound.Enabled = false
+        Me.grpActionsSound.Location = New System.Drawing.Point(6, 235)
+        Me.grpActionsSound.Name = "grpActionsSound"
+        Me.grpActionsSound.Size = New System.Drawing.Size(193, 72)
+        Me.grpActionsSound.TabIndex = 20
+        Me.grpActionsSound.TabStop = false
+        '
+        'btnActionsSoundFile
+        '
+        Me.btnActionsSoundFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnActionsSoundFile.Image = CType(resources.GetObject("btnActionsSoundFile.Image"),System.Drawing.Image)
+        Me.btnActionsSoundFile.Location = New System.Drawing.Point(164, 16)
+        Me.btnActionsSoundFile.Name = "btnActionsSoundFile"
+        Me.btnActionsSoundFile.Size = New System.Drawing.Size(23, 23)
+        Me.btnActionsSoundFile.TabIndex = 9
+        Me.btnActionsSoundFile.UseVisualStyleBackColor = true
+        '
+        'cbxActionsSoundSystem
+        '
+        Me.cbxActionsSoundSystem.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.cbxActionsSoundSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxActionsSoundSystem.FormattingEnabled = true
+        Me.cbxActionsSoundSystem.Items.AddRange(New Object() {"Question", "Hand", "Exclamation", "Beep", "Asterisk"})
+        Me.cbxActionsSoundSystem.Location = New System.Drawing.Point(95, 41)
+        Me.cbxActionsSoundSystem.Name = "cbxActionsSoundSystem"
+        Me.cbxActionsSoundSystem.Size = New System.Drawing.Size(92, 21)
+        Me.cbxActionsSoundSystem.TabIndex = 8
+        '
+        'txtActionsSoundFile
+        '
+        Me.txtActionsSoundFile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.txtActionsSoundFile.Location = New System.Drawing.Point(105, 18)
+        Me.txtActionsSoundFile.Name = "txtActionsSoundFile"
+        Me.txtActionsSoundFile.ReadOnly = true
+        Me.txtActionsSoundFile.Size = New System.Drawing.Size(59, 20)
+        Me.txtActionsSoundFile.TabIndex = 2
+        '
+        'optActionsSoundSystem
+        '
+        Me.optActionsSoundSystem.AutoSize = true
+        Me.optActionsSoundSystem.Location = New System.Drawing.Point(6, 42)
+        Me.optActionsSoundSystem.Name = "optActionsSoundSystem"
+        Me.optActionsSoundSystem.Size = New System.Drawing.Size(94, 17)
+        Me.optActionsSoundSystem.TabIndex = 1
+        Me.optActionsSoundSystem.Text = "System sound:"
+        Me.optActionsSoundSystem.UseVisualStyleBackColor = true
+        '
+        'optActionsSoundFile
+        '
+        Me.optActionsSoundFile.AutoSize = true
+        Me.optActionsSoundFile.Checked = true
+        Me.optActionsSoundFile.Location = New System.Drawing.Point(6, 19)
+        Me.optActionsSoundFile.Name = "optActionsSoundFile"
+        Me.optActionsSoundFile.Size = New System.Drawing.Size(104, 17)
+        Me.optActionsSoundFile.TabIndex = 0
+        Me.optActionsSoundFile.TabStop = true
+        Me.optActionsSoundFile.Text = "Specified sound:"
+        Me.optActionsSoundFile.UseVisualStyleBackColor = true
         '
         'chkActionsStop
         '
@@ -235,7 +326,7 @@ Partial Class PortActions
         'chkActionsClose
         '
         Me.chkActionsClose.AutoSize = true
-        Me.chkActionsClose.Location = New System.Drawing.Point(6, 189)
+        Me.chkActionsClose.Location = New System.Drawing.Point(6, 212)
         Me.chkActionsClose.Name = "chkActionsClose"
         Me.chkActionsClose.Size = New System.Drawing.Size(112, 17)
         Me.chkActionsClose.TabIndex = 5
@@ -396,7 +487,7 @@ Partial Class PortActions
         'btnStart
         '
         Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnStart.Location = New System.Drawing.Point(12, 402)
+        Me.btnStart.Location = New System.Drawing.Point(36, 504)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(75, 23)
         Me.btnStart.TabIndex = 22
@@ -407,7 +498,7 @@ Partial Class PortActions
         '
         Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnClose.Location = New System.Drawing.Point(93, 402)
+        Me.btnClose.Location = New System.Drawing.Point(117, 504)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 23
@@ -427,7 +518,7 @@ Partial Class PortActions
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnClose
-        Me.ClientSize = New System.Drawing.Size(477, 437)
+        Me.ClientSize = New System.Drawing.Size(477, 539)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.grpActions)
@@ -445,6 +536,8 @@ Partial Class PortActions
         Me.grpChanges.PerformLayout
         Me.grpActions.ResumeLayout(false)
         Me.grpActions.PerformLayout
+        Me.grpActionsSound.ResumeLayout(false)
+        Me.grpActionsSound.PerformLayout
         Me.grpActionsMsgBox.ResumeLayout(false)
         Me.grpActionsMsgBox.PerformLayout
         Me.grpActionsProgram.ResumeLayout(false)
@@ -452,13 +545,19 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
-    Friend chkActionsStop As System.Windows.Forms.CheckBox
+    Friend WithEvents chkActionsSound As System.Windows.Forms.CheckBox
+    Friend WithEvents optActionsSoundFile As System.Windows.Forms.RadioButton
+    Friend WithEvents optActionsSoundSystem As System.Windows.Forms.RadioButton
+    Friend WithEvents txtActionsSoundFile As System.Windows.Forms.TextBox
+    Friend WithEvents cbxActionsSoundSystem As System.Windows.Forms.ComboBox
+    Friend WithEvents btnActionsSoundFile As System.Windows.Forms.Button
+    Friend WithEvents grpActionsSound As System.Windows.Forms.GroupBox
+    Friend WithEvents chkActionsStop As System.Windows.Forms.CheckBox
     Friend WithEvents selectProgramDialog As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnActionsProgramBrowse As System.Windows.Forms.Button
     Friend WithEvents btnActionsProgramPuTTY As System.Windows.Forms.Button
     Friend WithEvents lblActionsMsgBoxButtons As System.Windows.Forms.Label
     Friend WithEvents cbxActionsMsgBoxButtons As System.Windows.Forms.ComboBox
-    'Friend WithEvents
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnStart As System.Windows.Forms.Button
     Friend WithEvents chkActionsProgram As System.Windows.Forms.CheckBox

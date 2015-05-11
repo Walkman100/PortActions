@@ -4,6 +4,7 @@
     Private Sub PortActions_Load() Handles MyBase.Load
         cbxActionsMsgBoxButtons.SelectedIndex = 0
         cbxActionsMsgBoxStyle.SelectedIndex = 0
+        cbxActionsSoundSystem.SelectedIndex = 0
         selectProgramDialog.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
         For Each PortName In My.Computer.Ports.SerialPortNames
             lstCurrentPorts.Items.Add(PortName)
@@ -58,7 +59,7 @@
     
     Private buttons As Integer
     Private style As Integer
-    Private Sub DoActions(port As String)
+    Private Sub DoActions(optional port As String = "")
         If chkActionsProgram.Checked Then
             If System.IO.File.Exists(txtActionsProgram.Text) Then
                 Process.Start(txtActionsProgram.Text, txtActionsProgramArgs.Text)
@@ -93,7 +94,25 @@
                 Case 4 'Question
                     style = MsgBoxStyle.Question
             End Select
-            Return MsgBox(txtActionsMsgBoxText.Text, buttons + style)
+            MsgBox(txtActionsMsgBoxText.Text, buttons + style)
+        End If
+        If chkActionsSound.Checked Then
+            If optActionsSoundFile.Checked Then
+                My.Computer.Audio.Play(txtActionsSoundFile.Text)
+            Else
+                Select Case cbxActionsSoundSystem.SelectedIndex
+                    Case 0 'Question
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Question)
+                    Case 1 'Hand
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Hand)
+                    Case 2 'Exclamation
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Exclamation)
+                    Case 3 'Beep
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Beep)
+                    Case 4 'Asterisk
+                        My.Computer.Audio.PlaySystemSound(System.Media.SystemSounds.Asterisk)
+                End Select
+            End If
         End If
         If chkActionsStop.Checked Then
             btnStart_Click
@@ -147,5 +166,21 @@
     
     Private Sub chkActionsMsgBox_CheckedChanged() Handles chkActionsMsgBox.CheckedChanged
         grpActionsMsgBox.Enabled = chkActionsMsgBox.Checked
+    End Sub
+    
+    Private Sub chkActionsSound_CheckedChanged() Handles chkActionsSound.CheckedChanged
+        grpActionsSound.Enabled = chkActionsSound.Checked
+    End Sub
+    
+    Private Sub SoundSourceChanged() Handles optActionsSoundFile.CheckedChanged, optActionsSoundSystem.CheckedChanged
+        txtActionsSoundFile.Enabled = optActionsSoundFile.Checked
+        btnActionsSoundFile.Enabled = optActionsSoundFile.Checked
+        cbxActionsSoundSystem.Enabled = optActionsSoundSystem.Checked
+    End Sub
+    
+    Private Sub btnActionsSoundFile_Click() Handles btnActionsSoundFile.Click
+        If selectProgramDialog.ShowDialog = DialogResult.OK Then
+            txtActionsSoundFile.Text = selectProgramDialog.FileName
+        End If
     End Sub
 End Class
