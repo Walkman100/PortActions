@@ -533,8 +533,8 @@ Partial Class PortActions
         Me.Controls.Add(Me.grpPorts)
         Me.Controls.Add(Me.lblCurrentPorts)
         Me.Controls.Add(Me.lstCurrentPorts)
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "PortActions"
-        Me.ShowIcon = false
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Port Actions"
         Me.grpPorts.ResumeLayout(false)
