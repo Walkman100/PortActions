@@ -61,10 +61,10 @@
     Private style As Integer
     Private Sub DoActions(optional port As String = "")
         If chkActionsProgram.Checked Then
-            If System.IO.File.Exists(txtActionsProgram.Text) Then
-                Process.Start(txtActionsProgram.Text, txtActionsProgramArgs.Text)
+            If System.IO.File.Exists(String.Format(txtActionsProgram.Text, port)) Then
+                Process.Start(String.Format(txtActionsProgram.Text, port), String.Format(txtActionsProgramArgs.Text, port))
             Else
-                MsgBox("Program not found!", MsgBoxStyle.Exclamation)
+                MsgBox("Program " & String.Format(txtActionsProgram.Text, port) & " not found!", MsgBoxStyle.Exclamation)
             End If
         End If
         If chkActionsMsgBox.Checked Then
@@ -94,14 +94,14 @@
                 Case 4 'Question
                     style = MsgBoxStyle.Question
             End Select
-            MsgBox(txtActionsMsgBoxText.Text, buttons + style)
+            MsgBox(String.Format(txtActionsMsgBoxText.Text, port), buttons + style)
         End If
         If chkActionsSound.Checked Then
             If optActionsSoundFile.Checked Then
-                If System.IO.File.Exists(txtActionsSoundFile.Text) Then
-                    My.Computer.Audio.Play(txtActionsSoundFile.Text)
+                If System.IO.File.Exists(String.Format(txtActionsSoundFile.Text, port)) Then
+                    My.Computer.Audio.Play(String.Format(txtActionsSoundFile.Text, port))
                 Else
-                    MsgBox("Audio file not found!", MsgBoxStyle.Exclamation)
+                    MsgBox("Audio file " & String.Format(txtActionsSoundFile.Text, port) & "not found!", MsgBoxStyle.Exclamation)
                 End If
             Else
                 Select Case cbxActionsSoundSystem.SelectedIndex

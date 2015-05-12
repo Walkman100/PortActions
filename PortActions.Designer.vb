@@ -65,6 +65,8 @@ Partial Class PortActions
         Me.btnClose = New System.Windows.Forms.Button()
         Me.selectProgramDialog = New System.Windows.Forms.OpenFileDialog()
         Me.selectSoundDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.btnExpand = New System.Windows.Forms.Button()
+        Me.lblInfo = New System.Windows.Forms.Label()
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
@@ -84,7 +86,7 @@ Partial Class PortActions
         Me.lstCurrentPorts.Location = New System.Drawing.Point(223, 30)
         Me.lstCurrentPorts.Name = "lstCurrentPorts"
         Me.lstCurrentPorts.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 497)
+        Me.lstCurrentPorts.Size = New System.Drawing.Size(242, 536)
         Me.lstCurrentPorts.TabIndex = 16
         '
         'timerPortChecker
@@ -196,8 +198,7 @@ Partial Class PortActions
         '
         'grpActions
         '
-        Me.grpActions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-                        Or System.Windows.Forms.AnchorStyles.Left)  _
+        Me.grpActions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.grpActions.Controls.Add(Me.chkActionsSound)
         Me.grpActions.Controls.Add(Me.grpActionsSound)
@@ -487,21 +488,21 @@ Partial Class PortActions
         '
         'btnStart
         '
-        Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnStart.Location = New System.Drawing.Point(36, 504)
+        Me.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnStart.Location = New System.Drawing.Point(12, 504)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(75, 23)
+        Me.btnStart.Size = New System.Drawing.Size(59, 23)
         Me.btnStart.TabIndex = 22
         Me.btnStart.Text = "Start"
         Me.btnStart.UseVisualStyleBackColor = true
         '
         'btnClose
         '
-        Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnClose.Location = New System.Drawing.Point(117, 504)
+        Me.btnClose.Location = New System.Drawing.Point(158, 504)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.Size = New System.Drawing.Size(59, 23)
         Me.btnClose.TabIndex = 23
         Me.btnClose.Text = "Exit"
         Me.btnClose.UseVisualStyleBackColor = true
@@ -519,13 +520,39 @@ Partial Class PortActions
         Me.selectSoundDialog.Filter = "WAVE Sound files|*.wav"
         Me.selectSoundDialog.ReadOnlyChecked = true
         '
+        'btnExpand
+        '
+        Me.btnExpand.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnExpand.Location = New System.Drawing.Point(77, 504)
+        Me.btnExpand.Name = "btnExpand"
+        Me.btnExpand.Size = New System.Drawing.Size(75, 23)
+        Me.btnExpand.TabIndex = 24
+        Me.btnExpand.Text = "More Info..."
+        Me.btnExpand.UseVisualStyleBackColor = true
+        '
+        'lblInfo
+        '
+        Me.lblInfo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+                        Or System.Windows.Forms.AnchorStyles.Left)  _
+                        Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.lblInfo.AutoEllipsis = true
+        Me.lblInfo.Location = New System.Drawing.Point(12, 530)
+        Me.lblInfo.Name = "lblInfo"
+        Me.lblInfo.Size = New System.Drawing.Size(205, 39)
+        Me.lblInfo.TabIndex = 25
+        Me.lblInfo.Text = "Use {0} in any field and it will be replaced with the port that has had its statu"& _ 
+        "s changed."
+        Me.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
         'PortActions
         '
         Me.AcceptButton = Me.btnStart
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnClose
-        Me.ClientSize = New System.Drawing.Size(477, 539)
+        Me.ClientSize = New System.Drawing.Size(477, 578)
+        Me.Controls.Add(Me.lblInfo)
+        Me.Controls.Add(Me.btnExpand)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.grpActions)
@@ -552,7 +579,9 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
-    Friend selectSoundDialog As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents lblInfo As System.Windows.Forms.Label
+    Friend WithEvents btnExpand As System.Windows.Forms.Button
+    Friend WithEvents selectSoundDialog As System.Windows.Forms.OpenFileDialog
     Friend WithEvents chkActionsSound As System.Windows.Forms.CheckBox
     Friend WithEvents optActionsSoundFile As System.Windows.Forms.RadioButton
     Friend WithEvents optActionsSoundSystem As System.Windows.Forms.RadioButton
