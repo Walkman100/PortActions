@@ -69,17 +69,28 @@
             Exit Sub
         End If
         
-        For Each PortName In My.Computer.Ports.SerialPortNames
-            If Not lstCurrentPorts.Items.Contains(PortName) Then
-                If chkChangesAdded.Checked Then DoActions(PortName)
-            End If
-        Next
-        For Each PortInList In lstCurrentPorts.Items
-            If Not My.Computer.Ports.SerialPortNames.Contains(PortInList) Then
-                If chkChangesRemoved.Checked Then DoActions(PortInList)
-            End If
-        Next
-        
+        If chkChangesAdded.Checked Then
+            For Each PortName In My.Computer.Ports.SerialPortNames
+                If Not lstCurrentPorts.Items.Contains(PortName) Then
+                    If optPortsAll.Checked Then
+                        DoActions
+                    Else
+                        If WatchPorts.Contains(PortName) Then DoActions(PortName)
+                    End If
+                End If
+            Next
+        End If
+        If chkChangesRemoved.Checked Then
+            For Each PortInList In lstCurrentPorts.Items
+                If Not My.Computer.Ports.SerialPortNames.Contains(PortInList) Then
+                    If optPortsAll.Checked Then
+                        DoActions
+                    Else
+                        If WatchPorts.Contains(PortInList) Then DoActions(PortInList)
+                    End If
+                End If
+            Next
+        End If
         If chkChangesRemember.Checked Then
             lblCurrentPorts.Text = "Remembered Serial Ports:"
         Else
