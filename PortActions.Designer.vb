@@ -122,11 +122,12 @@ Partial Class PortActions
         '
         Me.txtPorts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
                         Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.txtPorts.Enabled = false
         Me.txtPorts.Location = New System.Drawing.Point(73, 41)
         Me.txtPorts.Name = "txtPorts"
+        Me.txtPorts.ReadOnly = true
         Me.txtPorts.Size = New System.Drawing.Size(128, 20)
         Me.txtPorts.TabIndex = 2
+        Me.txtPorts.Text = "COM2,COM4"
         '
         'optPortsSome
         '

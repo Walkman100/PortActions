@@ -16,18 +16,20 @@
     Private Sub btnStart_Click() Handles btnStart.Click
         If btnStart.Text = "Start" Then
             btnStart.Text = "Started!"
-            txtPorts.Enabled = False
+            txtPorts.ReadOnly = True
             If optPortsSome.Checked Then IteratePorts
             timerPortChecker.Start
         ElseIf btnStart.Text = "Stop"
             btnStart.Text = "Stopped!"
-            txtPorts.Enabled = optPortsSome.Checked
+            txtPorts.ReadOnly = optPortsAll.Checked
             Array.Resize(WatchPorts,1)
             WatchPorts(0) = ""
         End If
-        lstCurrentPorts.Items.Clear()
+        If chkChangesRemember.Checked = False Then lstCurrentPorts.Items.Clear()
         For Each PortName In My.Computer.Ports.SerialPortNames
-            lstCurrentPorts.Items.Add(PortName)
+            If Not lstCurrentPorts.Items.Contains(PortName) Then
+                lstCurrentPorts.Items.Add(PortName)
+            End If
         Next
     End Sub
     
@@ -78,10 +80,11 @@
             End If
         Next
         
-        If chkChangesRemember.Checked = True Then
+        If chkChangesRemember.Checked Then
             lblCurrentPorts.Text = "Remembered Serial Ports:"
         Else
             lstCurrentPorts.Items.Clear()
+            lblCurrentPorts.Text = "Available Ports:"
         End If
         For Each PortName In My.Computer.Ports.SerialPortNames
             If Not lstCurrentPorts.Items.Contains(PortName) Then
@@ -166,7 +169,7 @@
     ' GUI stuff
     
     Private Sub optPortsSome_CheckedChanged() Handles optPortsSome.CheckedChanged
-        If timerPortChecker.Enabled = False Then txtPorts.Enabled = optPortsSome.Checked
+        If timerPortChecker.Enabled = False Then txtPorts.ReadOnly = optPortsAll.Checked
     End Sub
     
     Private Sub chkChangesRemoved_CheckedChanged() Handles chkChangesRemoved.CheckedChanged
