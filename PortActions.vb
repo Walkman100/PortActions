@@ -11,16 +11,49 @@
         Next
     End Sub
     
+    Dim WatchPorts(0) As String
+    Dim WatchPortsTmp As String
     Private Sub btnStart_Click() Handles btnStart.Click
         If btnStart.Text = "Start" Then
             btnStart.Text = "Started!"
+            txtPorts.Enabled = False
+            If optPortsSome.Checked Then IteratePorts
             timerPortChecker.Start
         ElseIf btnStart.Text = "Stop"
             btnStart.Text = "Stopped!"
+            txtPorts.Enabled = optPortsSome.Checked
+            Array.Resize(WatchPorts,1)
+            WatchPorts(0) = ""
         End If
         lstCurrentPorts.Items.Clear()
         For Each PortName In My.Computer.Ports.SerialPortNames
             lstCurrentPorts.Items.Add(PortName)
+        Next
+    End Sub
+    
+    Private Sub IteratePorts
+        WatchPortsTmp = txtPorts.Text
+        If WatchPortsTmp.Contains(",") Then
+            WatchPorts(0) = WatchPortsTmp.Remove(WatchPortsTmp.IndexOf(","))
+            Do Until Not WatchPortsTmp.Contains(",")
+                WatchPortsTmp = WatchPortsTmp.Substring(WatchPortsTmp.IndexOf(",")+1)
+                Array.Resize(WatchPorts, WatchPorts.Length+1)
+                If WatchPortsTmp.Contains(",") Then
+                    WatchPorts(WatchPorts.Length-1) = WatchPortsTmp.remove(WatchPortsTmp.IndexOf(","))
+                Else
+                    WatchPorts(WatchPorts.Length-1) = WatchPortsTmp
+                End If
+            Loop
+        Else
+            WatchPorts(0) = WatchPortsTmp
+        End If
+        txtPorts.Text = ""
+        For Each port In WatchPorts
+            If txtPorts.Text = "" Then
+                txtPorts.Text &= port
+            Else
+                txtPorts.Text &= "," & port
+            End If
         Next
     End Sub
     
@@ -133,7 +166,7 @@
     ' GUI stuff
     
     Private Sub optPortsSome_CheckedChanged() Handles optPortsSome.CheckedChanged
-        txtPorts.Enabled = optPortsSome.Checked
+        If timerPortChecker.Enabled = False Then txtPorts.Enabled = optPortsSome.Checked
     End Sub
     
     Private Sub chkChangesRemoved_CheckedChanged() Handles chkChangesRemoved.CheckedChanged
