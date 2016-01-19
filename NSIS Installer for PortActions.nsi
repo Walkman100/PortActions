@@ -5,6 +5,7 @@
 Icon "My Project\SerialPort.ico"
 Caption "PortActions Installer"
 Name "PortActions"
+XPStyle on
 AutoCloseWindow true
 ShowInstDetails show
 

@@ -6,6 +6,9 @@
         cbxActionsMsgBoxStyle.SelectedIndex = 0
         cbxActionsSoundSystem.SelectedIndex = 0
         selectProgramDialog.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
+        ' can also do the following to get ports:
+        'Dim serialports As New IO.Ports.SerialPort
+        'serialports.GetPortNames
         For Each PortName In My.Computer.Ports.SerialPortNames
             lstCurrentPorts.Items.Add(PortName)
         Next
@@ -52,7 +55,7 @@
         txtPorts.Text = ""
         For Each port In WatchPorts
             If txtPorts.Text = "" Then
-                txtPorts.Text &= port
+                txtPorts.Text = port
             Else
                 txtPorts.Text &= "," & port
             End If
@@ -180,7 +183,7 @@
     ' GUI stuff
     
     Private Sub optPortsSome_CheckedChanged() Handles optPortsSome.CheckedChanged
-        If timerPortChecker.Enabled = False Then txtPorts.ReadOnly = optPortsAll.Checked
+        If timerPortChecker.Enabled = False Then txtPorts.ReadOnly = Not optPortsSome.Checked
     End Sub
     
     Private Sub chkChangesRemoved_CheckedChanged() Handles chkChangesRemoved.CheckedChanged
@@ -210,7 +213,7 @@
     End Sub
     
     Private Sub btnActionsProgramPuTTY_MouseUp(sender As Object, e As MouseEventArgs) Handles btnActionsProgramPuTTY.MouseUp
-        If e.Button = Windows.Forms.MouseButtons.Right Then
+        If e.Button = MouseButtons.Right Then
             txtActionsProgram.Text = Environment.GetEnvironmentVariable("ProgramFiles") & "\PuTTY\putty.exe"
         End If
     End Sub
