@@ -1,4 +1,4 @@
-﻿Public Class PortActions
+Public Class PortActions
     'Private 
     ' Handles 
     Private Sub PortActions_Load() Handles MyBase.Load
