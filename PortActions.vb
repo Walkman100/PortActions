@@ -5,6 +5,8 @@ Public Class PortActions
         cbxActionsMsgBoxButtons.SelectedIndex = 0
         cbxActionsMsgBoxStyle.SelectedIndex = 0
         cbxActionsSoundSystem.SelectedIndex = 0
+        lblVersion.Text = My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build
+        
         selectProgramDialog.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
         ' can also do the following to get ports:
         'Dim serialports As New IO.Ports.SerialPort

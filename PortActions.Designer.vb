@@ -67,6 +67,7 @@ Partial Class PortActions
         Me.selectSoundDialog = New System.Windows.Forms.OpenFileDialog()
         Me.btnExpand = New System.Windows.Forms.Button()
         Me.lblInfo = New System.Windows.Forms.Label()
+        Me.lblVersion = New System.Windows.Forms.Label()
         Me.grpPorts.SuspendLayout
         Me.grpChanges.SuspendLayout
         Me.grpActions.SuspendLayout
@@ -545,6 +546,17 @@ Partial Class PortActions
         "s changed."
         Me.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'lblVersion
+        '
+        Me.lblVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.lblVersion.AutoSize = true
+        Me.lblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblVersion.Location = New System.Drawing.Point(444, 568)
+        Me.lblVersion.Name = "lblVersion"
+        Me.lblVersion.Size = New System.Drawing.Size(21, 9)
+        Me.lblVersion.TabIndex = 26
+        Me.lblVersion.Text = "1.0.0"
+        '
         'PortActions
         '
         Me.AcceptButton = Me.btnStart
@@ -552,6 +564,7 @@ Partial Class PortActions
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnClose
         Me.ClientSize = New System.Drawing.Size(477, 578)
+        Me.Controls.Add(Me.lblVersion)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.btnExpand)
         Me.Controls.Add(Me.btnClose)
@@ -580,6 +593,7 @@ Partial Class PortActions
         Me.ResumeLayout(false)
         Me.PerformLayout
     End Sub
+    Private lblVersion As System.Windows.Forms.Label
     Friend WithEvents lblInfo As System.Windows.Forms.Label
     Friend WithEvents btnExpand As System.Windows.Forms.Button
     Friend WithEvents selectSoundDialog As System.Windows.Forms.OpenFileDialog
