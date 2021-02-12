@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("A program that does stuff depending on whether COM ports are open or not")> 
 <Assembly: AssemblyCompany("WalkmanOSS")> 
 <Assembly: AssemblyProduct("PortActions")> 
-<Assembly: AssemblyCopyright("FOSS from Walkman 2015")> 
+<Assembly: AssemblyCopyright("FOSS from Walkman 2015-21")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
